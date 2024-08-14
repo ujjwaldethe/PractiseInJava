@@ -1,5 +1,5 @@
 package AdditionUsingGUI;
-//Package Name Is Changeds
+//Package Name Is Changed
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
