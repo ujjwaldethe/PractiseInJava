@@ -1,25 +1,27 @@
-name: Save Date and Time in Log File
+name: Daily Auto Commit
 
 on:
   schedule:
-    - cron: "*/1 * * * *" # Runs every minute (GitHub Actions does not support sub-minute intervals)
-  workflow_dispatch:  # To manually trigger the workflow
+    - cron: "17 19 * * *"
+ # Runs daily at 10:00 AM IST
 
 jobs:
-  log_time:
+  auto-commit:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v3
-        
-      - name: Create log.txt and log the date and time
+
+      - name: Make Changes (Optional)
         run: |
-          echo "Current Date and Time: $(date)" >> log.txt
-          cat log.txt # Display the content of log.txt to verify
-          
-      - name: Upload log.txt to GitHub repository (optional)
-        uses: actions/upload-artifact@v3
-        with:
-          name: log-file
-          path: log.txt
+          # Add a timestamp or any other changes you want to make
+          echo "Updated on $(date)" >> daily-log.txt
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "ujjwaldethe"
+          git config --global user.email "ujwaldethe518@gmail.com"
+          git add .
+          git commit -m "$(date)"
+          git push
