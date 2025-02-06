@@ -1,0 +1,25 @@
+name: Save Date and Time in Log File
+
+on:
+  schedule:
+    - cron: "*/1 * * * *" # Runs every minute (GitHub Actions does not support sub-minute intervals)
+  workflow_dispatch:  # To manually trigger the workflow
+
+jobs:
+  log_time:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Create log.txt and log the date and time
+        run: |
+          echo "Current Date and Time: $(date)" >> log.txt
+          cat log.txt # Display the content of log.txt to verify
+          
+      - name: Upload log.txt to GitHub repository (optional)
+        uses: actions/upload-artifact@v3
+        with:
+          name: log-file
+          path: log.txt
