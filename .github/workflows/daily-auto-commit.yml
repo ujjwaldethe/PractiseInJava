@@ -16,7 +16,7 @@ jobs:
       - name: Make Changes (Optional)
         run: |
           # Add a timestamp or any other changes you want to make
-          echo "Updated on $(date)" >> daily-log.txt
+          echo "Updated on $(date)" >> log.txt
 
       - name: Commit and Push Changes
         run: |
