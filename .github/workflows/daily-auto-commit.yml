@@ -2,7 +2,7 @@ name: Daily Auto Commit
 
 on:
   schedule:
-    - cron: "19 19 * * *"
+    - cron: "20 19 * * *"
  # Runs daily at 10:00 AM IST
 
 jobs:
